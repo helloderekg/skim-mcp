@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" role="img" aria-label="Diagram: reading a 3,032-line file in full costs 25,180 tokens; with skim, the skeleton plus one expanded function costs 8,906 tokens, 65 percent less, with every other span still recoverable.">
+  <rect x="0" y="0" width="960" height="500" rx="14" fill="#0b0f14"/>
+
+  <text x="480" y="44" text-anchor="middle" font-size="21" font-weight="700" fill="#f0f6fc">skim: read the skeleton, expand only what you need</text>
+
+  <!-- ============ LEFT: full read ============ -->
+  <rect x="36" y="72" width="392" height="340" rx="10" fill="#11161d"/>
+  <rect x="36" y="72" width="392" height="4" rx="2" fill="#58a6ff"/>
+  <text x="58" y="106" font-size="12" letter-spacing="1.5" fill="#c9d1d9">WITHOUT SKIM</text>
+  <text x="58" y="134" font-size="15" font-family="Consolas,'SF Mono',monospace" fill="#58a6ff">Read("tarfile.py")</text>
+  <text x="58" y="156" font-size="13" fill="#c9d1d9">3,032 lines, every one of them into context</text>
+
+  <!-- simulated wall of code -->
+  <g fill="#58a6ff" opacity="0.55">
+    <rect x="58" y="176" width="330" height="6" rx="3"/>
+    <rect x="58" y="190" width="290" height="6" rx="3"/>
+    <rect x="58" y="204" width="316" height="6" rx="3"/>
+    <rect x="58" y="218" width="252" height="6" rx="3"/>
+    <rect x="58" y="232" width="338" height="6" rx="3"/>
+    <rect x="58" y="246" width="300" height="6" rx="3"/>
+    <rect x="58" y="260" width="270" height="6" rx="3"/>
+    <rect x="58" y="274" width="330" height="6" rx="3"/>
+    <rect x="58" y="288" width="240" height="6" rx="3"/>
+    <rect x="58" y="302" width="312" height="6" rx="3"/>
+    <rect x="58" y="316" width="284" height="6" rx="3"/>
+  </g>
+
+  <text x="58" y="366" font-size="28" font-weight="800" fill="#58a6ff">25,180 tokens</text>
+  <text x="58" y="392" font-size="13" fill="#c9d1d9">paid for every line, needed or not</text>
+
+  <!-- ============ RIGHT: skim ============ -->
+  <rect x="456" y="72" width="468" height="340" rx="10" fill="#11161d"/>
+  <rect x="456" y="72" width="468" height="4" rx="2" fill="#3fb950"/>
+  <text x="478" y="106" font-size="12" letter-spacing="1.5" fill="#c9d1d9">WITH SKIM</text>
+
+  <text x="478" y="134" font-size="15" font-family="Consolas,'SF Mono',monospace" fill="#3fb950">skim_open("tarfile.py")</text>
+  <text x="478" y="156" font-size="13" fill="#c9d1d9">signatures verbatim, bodies folded behind anchors</text>
+
+  <g font-size="12.5" font-family="Consolas,'SF Mono',monospace">
+    <text x="478" y="182" fill="#e6edf3">def next(self):</text>
+    <text x="508" y="200" fill="#c9d1d9"># ... 43 line body -&gt; expand("a17")</text>
+    <text x="478" y="222" fill="#e6edf3">def _proc_pax(self, tarfile):</text>
+    <text x="508" y="240" fill="#c9d1d9"># ... 119 line body -&gt; expand("a41")</text>
+    <text x="478" y="262" fill="#e6edf3">def extractall(self, path=".", members=None):</text>
+    <text x="508" y="280" fill="#c9d1d9"># ... 61 line body -&gt; expand("a58")</text>
+  </g>
+
+  <text x="478" y="312" font-size="15" font-family="Consolas,'SF Mono',monospace" fill="#3fb950">skim_expand("a41")</text>
+  <text x="478" y="334" font-size="13" fill="#c9d1d9">returns the one 119-line function, byte-exact</text>
+
+  <text x="478" y="366" font-size="28" font-weight="800" fill="#3fb950">8,906 tokens</text>
+  <text x="478" y="392" font-size="13" fill="#c9d1d9">skeleton + expand, measured: 65% saved on the same task</text>
+
+  <!-- ============ bottom: the guarantee ============ -->
+  <rect x="36" y="432" width="888" height="46" rx="10" fill="#11161d"/>
+  <rect x="36" y="432" width="4" height="46" rx="2" fill="#3fb950"/>
+  <text x="480" y="461" text-anchor="middle" font-size="14.5" fill="#f0f6fc">Lazy, not lossy: nothing is paraphrased or dropped. Every folded span stays one expand("aN") call away.</text>
+</svg>

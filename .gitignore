@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+
+# Tooling
+.pytest_cache/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# one-time launch runbook (never ship it)
+GO-LIVE.md
+
+# skim runtime / benchmark artifacts (not source)
+skim_calls.jsonl
+skim_calls.*.jsonl
+skim_calls.jsonl.cleared
+bench_corpus/
+repomix_out.txt
+.advtest_*/

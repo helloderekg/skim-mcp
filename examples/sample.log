@@ -1,0 +1,23 @@
+2026-06-27T10:01:02 INFO  service starting on 10.0.0.5:8080
+  config loaded from /etc/app/config.yaml
+  db pool size 20, cache ttl 300s
+  build a1b2c3d4-e5f6-7890-abcd-ef1234567890
+
+2026-06-27T10:01:05 ERROR connection refused to 10.0.0.9:5432
+  retry 1/3 failed with code E1042
+  stack: at db.connect (/srv/app/db.py:88)
+
+2026-06-27T10:01:05 ERROR connection refused to 10.0.0.9:5432
+  retry 1/3 failed with code E1042
+  stack: at db.connect (/srv/app/db.py:88)
+
+2026-06-27T10:01:11 ERROR connection refused to 10.0.0.9:5432
+  retry 2/3 failed with code E1042
+  stack: at db.connect (/srv/app/db.py:88)
+
+2026-06-27T10:01:17 FATAL giving up after 3 retries, exit code 70
+  last error E1042, host 10.0.0.9:5432 unreachable
+  shutting down workers 0x1f, flushing 412 queued jobs
+
+2026-06-27T10:02:40 INFO  health check ok, latency 12.4ms
+  uptime 1.5h, requests 10342, errors 3

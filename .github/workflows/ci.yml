@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: test (py${{ matrix.python }} on ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Sync (dev extras)
+        run: uv sync --extra dev
+      - name: Run test suite with coverage
+        run: uv run pytest --cov=skim --cov-report=term-missing
+      - name: Invariant sweep over the standard library
+        run: uv run python bench.py
+
+  audit:
+    name: dependency audit (0 advisories)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+      # pip-audit with no target audits the environment it runs IN (pip-audit's own uvx venv),
+      # not this project - so export the locked dependency set and audit that explicitly.
+      - name: Export locked requirements
+        run: uv export --all-extras --no-emit-project --format requirements-txt -o requirements-audit.txt
+      - name: pip-audit (locked deps, 0 advisories)
+        run: uvx pip-audit --strict --no-deps -r requirements-audit.txt

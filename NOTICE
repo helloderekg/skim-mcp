@@ -1,0 +1,18 @@
+skim — third-party notices
+
+skim is licensed under the MIT License (see LICENSE). It bundles no third-party
+source code in its distribution. Its dependencies and their licenses:
+
+Runtime dependencies (installed with the package):
+  - mcp (Model Context Protocol Python SDK) — MIT License, Copyright (c) 2024 Anthropic, PBC
+  - tiktoken — MIT License, Copyright (c) 2022 OpenAI, Shantanu Jain   (optional; used for token counts)
+
+Development / test only (NOT distributed with the package):
+  - pytest — MIT License
+  - pytest-cov — MIT License
+  - hypothesis — Mozilla Public License 2.0 (used unmodified, dev/test only, never bundled)
+
+Trademarks: "Claude", "Claude Code", and "Anthropic" are trademarks of Anthropic, PBC.
+"Model Context Protocol" / "MCP" are used descriptively to indicate protocol compatibility.
+"Aider", "Basemind", and "Repomix" are trademarks of their respective owners. All marks are
+used nominatively for identification and comparison only and imply no endorsement.

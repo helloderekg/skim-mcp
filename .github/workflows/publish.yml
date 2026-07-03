@@ -1,0 +1,29 @@
+name: publish
+
+on:
+  release:
+    types: [published]
+
+permissions: {}
+
+jobs:
+  pypi:
+    name: build and publish to PyPI
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      contents: read
+      id-token: write   # PyPI trusted publishing (OIDC); no stored API token
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+      - name: Run the test suite first
+        run: |
+          uv sync --extra dev
+          uv run pytest
+      - name: Build sdist + wheel
+        run: uv build
+      - name: Publish (trusted publishing)
+        uses: pypa/gh-action-pypi-publish@release/v1

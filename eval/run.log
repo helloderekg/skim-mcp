@@ -1,0 +1,35 @@
+2026-07-02T10:14:01 svc[3121] starting sync pipeline run 8841
+2026-07-02T10:14:02 svc[3121] loading config from /etc/svc/pipeline.yml
+2026-07-02T10:14:03 svc[3121] resolved upstream endpoints (primary, replica)
+2026-07-02T10:14:04 svc[3121] connecting to primary datastore
+2026-07-02T10:14:05 svc[3121] dial tcp 10.0.0.9:5432: connect: connection refused
+2026-07-02T10:14:06 svc[3121] datastore unreachable, will retry with backoff
+2026-07-02T10:14:07 svc[3121] scheduling retry cycle
+2026-07-02T10:14:08 svc[3121] retry window opens
+2026-07-02T10:14:09 svc[3121] waiting on backoff timer
+2026-07-02T10:14:11 svc[3121] backoff armed
+2026-07-02T10:14:12 svc[3121] attempt log follows
+
+retry attempt: connect primary datastore
+dial tcp: connection refused by peer
+backing off before the next attempt
+
+retry attempt: connect primary datastore
+dial tcp: connection refused by peer
+backing off before the next attempt
+
+retry attempt: connect primary datastore
+dial tcp: connection refused by peer
+backing off before the next attempt
+
+2026-07-02T10:15:19 svc[3121] entering shutdown path
+2026-07-02T10:15:20 svc[3121] retries exhausted, three attempts made
+2026-07-02T10:15:21 svc[3121] marking pipeline run failed
+2026-07-02T10:15:22 svc[3121] flushing buffers to disk
+2026-07-02T10:15:23 svc[3121] shutdown sequence started
+2026-07-02T10:15:24 svc[3121] cleanup of temp state complete
+2026-07-02T10:15:25 svc[3121] giving up with exit code 70
+2026-07-02T10:15:26 svc[3121] notifying operator channel
+2026-07-02T10:15:27 svc[3121] final state persisted
+2026-07-02T10:15:28 svc[3121] closing file descriptors
+2026-07-02T10:15:29 svc[3121] terminated
