@@ -347,3 +347,5 @@ set `SKIM_LOG_FILE` to redirect it. It may contain paths/snippets from your own 
 
 **License.** [MIT](LICENSE). Runtime deps `mcp` (MIT, © Anthropic PBC) and `tiktoken` (MIT, © OpenAI) — see
 [NOTICE](NOTICE). The dev-only test dep `hypothesis` is MPL-2.0, used unmodified and never bundled.
+
+mcp-name: io.github.helloderekg/skim-mcp

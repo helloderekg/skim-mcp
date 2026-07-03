@@ -3,6 +3,14 @@
 All notable changes to skim are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow [SemVer](https://semver.org/).
 
+## 0.1.1 - 2026-07-03
+
+### Added
+
+- Official MCP Registry metadata: `server.json` and the `mcp-name: io.github.helloderekg/skim-mcp`
+  ownership marker in the README (the registry validates PyPI package ownership by finding that
+  line in the published package's README).
+
 ## 0.1.0 - 2026-07-02
 
 Initial public release.

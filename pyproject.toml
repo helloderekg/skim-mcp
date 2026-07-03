@@ -1,6 +1,6 @@
 [project]
 name = "skim-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "Token-efficient skim-then-expand I/O for agentic models (Claude Code / desktop Claude) via MCP"
 readme = "README.md"
 requires-python = ">=3.11"
